@@ -1,5 +1,6 @@
 package com.neppplus.pizzaorderapp.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.ListView
 import androidx.fragment.app.Fragment
 import com.neppplus.pizzaorderapp.R
+import com.neppplus.pizzaorderapp.ViewStoreDetailActivity
 import com.neppplus.pizzaorderapp.adapters.PizzaStoreAdapter
 import com.neppplus.pizzaorderapp.datas.Store
 
@@ -40,5 +42,15 @@ class PizzaStoreListFragment : Fragment() {
         mPizzaStroreDataList.add(Store("D피자가게", "1111-1111", "https://cdn0.iconfinder.com/data/icons/fastfood-31/64/pizza-italian-food-fast-fastfood-cheese-piece-128.png"))
 
         mPizzaStoreAdapter.notifyDataSetChanged()
+
+        pizzaStoreListView.setOnItemClickListener { parent, view, position, id ->
+            val clickedStore = mPizzaStroreDataList[position]
+
+            val myIntent = Intent(requireContext(), ViewStoreDetailActivity::class.java)
+
+            myIntent.putExtra("storeData", clickedStore)
+
+            startActivity(myIntent)
+        }
     }
 }
