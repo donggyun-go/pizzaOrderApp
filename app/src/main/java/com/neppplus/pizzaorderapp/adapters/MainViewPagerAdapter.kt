@@ -10,7 +10,7 @@ import com.neppplus.pizzaorderapp.fragments.PizzaStoreListFragment
 
 class MainViewPagerAdapter(fm : FragmentManager) : FragmentPagerAdapter(fm) {
 
-    override fun getPageTitle(position: Int): CharSequence? {
+    override fun getPageTitle(position: Int): CharSequence {
         return when(position) {
             0 -> "피자 가게"
             else -> "치킨 가게"
